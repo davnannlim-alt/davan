@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT & Computer Science | National University of Battambang (NUBB)</title>
+    <!-- Google Fonts: Kantumruy Pro for Khmer & Inter for English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #1B5E20;
+            --primary-accent: #2E7D32;
+            --light-green: #E8F5E9;
+            --gold-accent: #D4AF37;
+            --dark-brown: #3E2723;
+            --bg-neutral: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-muted: #6B7280;
+            --border-color: #E5E7EB;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --radius-lg: 12px;
+            --radius-md: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Kantumruy Pro', sans-serif;
+            background-color: var(--bg-neutral);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Navigation Header */
+        .site-header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-logo img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-khmer {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            line-height: 1.2;
+        }
+
+        .brand-english {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            background: linear-gradient(135deg, #1B5E20 0%, #0D3B11 100%);
+            color: #FFFFFF;
+            padding: 64px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.1rem;
+            color: #C8E6C9;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            color: #E8F5E9;
+            font-size: 0.98rem;
+            margin-bottom: 32px;
+            max-width: 640px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            color: #FFFFFF;
+            font-weight: 500;
+        }
+
+        /* Logo Display Card in Hero */
+        .logo-card-wrapper {
+            background: #FFFFFF;
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .logo-card-wrapper img {
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            margin-bottom: 16px;
+        }
+
+        .logo-card-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            font-weight: 500;
+        }
+
+        /* Quick Stats Bar */
+        .stats-bar {
+            margin-top: -32px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 56px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Section Layouts */
+        .section-header {
+            margin-bottom: 32px;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary-accent);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 6px;
+        }
+
+        .mb-60 {
+            margin-bottom: 60px;
+        }
+
+        /* Overview & Key Pillars Grid */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-green);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Curriculum & Major Tracks Section */
+        .tracks-section {
+            background: #FFFFFF;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 12px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 28px;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-green);
+            border-bottom-color: var(--primary-green);
+        }
+
+        .tab-panel {
+            display: none;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .tab-panel.active {
+            display: grid;
+        }
+
+        .panel-main h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .panel-main p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .course-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .course-item {
+            background: var(--bg-neutral);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-item::before {
+            content: '✓';
+            color: var(--primary-accent);
+            font-weight: bold;
+        }
+
+        .tech-stack-box {
+            background: var(--bg-neutral);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+        }
+
+        .tech-stack-box h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Interactive Filterable Explorer */
+        .explorer-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-green);
+            color: #FFFFFF;
+            border-color: var(--primary-green);
+        }
+
+        .explorer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .module-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .module-year {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .module-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .module-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .module-footer {
+            border-top: 1px dashed var(--border-color);
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer Section */
+        .site-footer {
+            background: var(--dark-brown);
+            color: #E0E0E0;
+            padding: 48px 0 24px;
+            margin-top: 80px;
+            border-top: 4px solid var(--gold-accent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h4 {
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: #B0BEC5;
+            line-height: 1.6;
+            max-width: 400px;
+        }
+
+        .footer-col h5 {
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #B0BEC5;
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #90A4AE;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .logo-card-wrapper {
+                max-width: 360px;
+                margin: 0 auto;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 12px;
+            }
+            .stat-item:nth-child(2), .stat-item:last-child {
+                border-bottom: none;
+            }
+            .overview-grid, .explorer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .tab-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-menu {
+                display: none; /* Mobile menu collapsed for clean display */
+            }
+            .overview-grid, .explorer-grid, .course-list {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand-logo">
+                <img src="https://nubb.edu.kh/wp-content/uploads/2021/04/UBB-logo-small.png" alt="National University of Battambang Logo">
+                <div class="brand-titles">
+                    <span class="brand-khmer">សាកលវិទ្យាល័យជាតិបាត់ដំបង</span>
+                    <span class="brand-english">National University of Battambang</span>
+                </div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#tracks">Academic Tracks</a></li>
+                <li><a href="#curriculum">Curriculum</a></li>
+                <li><a href="#labs">Labs & Tech</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badges">
+                    <span class="badge">Faculty of Science & Technology</span>
+                    <span class="badge">Department of IT</span>
+                </div>
+                <h1 style="margin-top: 16px;">Empowering Digital Innovators in Northwestern Cambodia</h1>
+                <div class="subtitle">Information Technology & Computer Science Education at NUBB</div>
+                <p>
+                    The National University of Battambang (NUBB) stands as a premier public higher education institution driving technology, engineering, and digital transformation. Our IT programs combine fundamental computing theory with modern software engineering, database design, networking, and cloud technologies.
+                </p>
+            </div>
+            
+            <div class="logo-card-wrapper">
+                <img src="image_a8a2a6.png" alt="NUBB Official Emblem">
+                <div class="logo-card-caption">
+                    Official Insignia of NUBB<br>
+                    <strong>សាកលវិទ្យាល័យជាតិបាត់ដំបង</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="container stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value">4 Years</div>
+                <div class="stat-label">Bachelor Degree Program</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">3 Tracks</div>
+                <div class="stat-label">Software, Networks & Systems</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">120+</div>
+                <div class="stat-label">Total Credits Standard</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">Industry Ready</div>
+                <div class="stat-label">Practical Capstone & Internship</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview & Pillars -->
+    <section id="overview" class="container mb-60">
+        <div class="section-header">
+            <span class="section-tag">Core Objectives</span>
+            <h2 class="section-title">Academic & Professional Excellence</h2>
+            <p class="section-desc">Designed to equip students with both foundational computer science theory and real-world implementation capabilities.</p>
+        </div>
+
+        <div class="overview-grid">
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>Software & Web Engineering</h3>
+                <p>Mastering backend architecture, OOP patterns (C++, C#, PHP), and modern full-stack web application development with secure database integrations.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Network Systems & Security</h3>
+                <p>Building secure enterprise infrastructure, mastering routing protocols, system administration, and network server configurations.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">☁️</div>
+                <h3>Data Analytics & Cloud</h3>
+                <p>Understanding database optimization, enterprise reporting, structured data processing (T-SQL/MySQL), and scalable cloud management systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum & Specializations -->
+    <section id="tracks" class="tracks-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Specializations</span>
+                <h2 class="section-title">IT Learning Pathways</h2>
+                <p class="section-desc">Explore our structured curriculum tracks tailored to modern tech industry demands.</p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="switchTab('software')">Software Engineering</button>
+                <button class="tab-btn" onclick="switchTab('database')">Data & Database Engineering</button>
+                <button class="tab-btn" onclick="switchTab('networks')">Networking & Infrastructure</button>
+            </div>
+
+            <!-- Tab 1: Software -->
+            <div id="tab-software" class="tab-panel active">
+                <div class="panel-main">
+                    <h3>Software Engineering & Web Application Development</h3>
+                    <p>Focuses on core programming fundamentals, object-oriented software design, dynamic web portals, and RESTful API integrations.</p>
+                    <ul class="course-list">
+                        <li class="course-item">Data Structures & Algorithms (C++)</li>
+                        <li class="course-item">Object-Oriented Programming (C# / .NET)</li>
+                        <li class="course-item">Full-Stack Web Dev (PHP / MVC Frameworks)</li>
+                        <li class="course-item">API Integration & Mobile Platforms</li>
+                    </ul>
+                </div>
+                <div class="tech-stack-box">
+                    <h4>Target Tech Stack</h4>
+                    <div class="tags-cloud">
+                        <span class="tag">C++</span>
+                        <span class="tag">C# .NET</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">CodeIgniter</span>
+                        <span class="tag">HTML5/CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Database -->
+            <div id="tab-database" class="tab-panel">
+                <div class="panel-main">
+                    <h3>Data Management & HR/Enterprise Analytics</h3>
+                    <p>Covers relational database systems, advanced query formulation, data analytics, and high-performance server-side data processing.</p>
+                    <ul class="course-list">
+                        <li class="course-item">Relational Database Systems (RDBMS)</li>
+                        <li class="course-item">Advanced SQL & T-SQL Scripting</li>
+                        <li class="course-item">Data Processing & Analytics</li>
+                        <li class="course-item">Enterprise System Management</li>
+                    </ul>
+                </div>
+                <div class="tech-stack-box">
+                    <h4>Target Tech Stack</h4>
+                    <div class="tags-cloud">
+                        <span class="tag">MySQL</span>
+                        <span class="tag">MS SQL Server</span>
+                        <span class="tag">T-SQL</span>
+                        <span class="tag">Database Tuning</span>
+                        <span class="tag">ETL Concepts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Networks -->
+            <div id="tab-networks" class="tab-panel">
+                <div class="panel-main">
+                    <h3>Network Administration & Cloud Systems</h3>
+                    <p>Prepares engineers to manage physical and cloud infrastructure, network security protocols, system hardening, and server administration.</p>
+                    <ul class="course-list">
+                        <li class="course-item">Computer Networking Fundamentals</li>
+                        <li class="course-item">Linux & Windows Server Administration</li>
+                        <li class="course-item">Cloud Management Systems</li>
+                        <li class="course-item">Information Security & Audit</li>
+                    </ul>
+                </div>
+                <div class="tech-stack-box">
+                    <h4>Target Tech Stack</h4>
+                    <div class="tags-cloud">
+                        <span class="tag">Linux System Admin</span>
+                        <span class="tag">Cisco Packet Tracer</span>
+                        <span class="tag">Cloud Infrastructure</span>
+                        <span class="tag">Network Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filterable Module Explorer -->
+    <section id="curriculum" class="container mb-60">
+        <div class="section-header">
+            <span class="section-tag">Interactive Syllabus</span>
+            <h2 class="section-title">Explore IT Course Modules</h2>
+            <p class="section-desc">Filter core subjects across the four-year degree roadmap.</p>
+        </div>
+
+        <div class="explorer-controls">
+            <button class="filter-btn active" onclick="filterModules('all')">All Modules</button>
+            <button class="filter-btn" onclick="filterModules('year1')">Year 1 & 2 (Foundations)</button>
+            <button class="filter-btn" onclick="filterModules('year3')">Year 3 (Core Advanced)</button>
+            <button class="filter-btn" onclick="filterModules('year4')">Year 4 (Capstone & Applied)</button>
+        </div>
+
+        <div class="explorer-grid">
+            <!-- Module 1 -->
+            <div class="module-card" data-category="year1">
+                <div>
+                    <div class="module-year">Year 1 • Foundation</div>
+                    <div class="module-title">Programming Fundamentals (C++)</div>
+                    <div class="module-desc">Variables, control structures, memory allocation, arrays, and problem-solving techniques for starting developers.</div>
+                </div>
+                <div class="module-footer">
+                    <span>Category: Development</span>
+                    <span>3 Credits</span>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module-card" data-category="year1">
+                <div>
+                    <div class="module-year">Year 2 • Applied</div>
+                    <div class="module-title">Data Structures & Algorithms</div>
+                    <div class="module-desc">In-depth exploration of pointers, linked lists, stacks, queues, trees, sorting algorithms, and complexity analysis.</div>
+                </div>
+                <div class="module-footer">
+                    <span>Category: Core CS</span>
+                    <span>3 Credits</span>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module-card" data-category="year3">
+                <div>
+                    <div class="module-year">Year 3 • Core</div>
+                    <div class="module-title">Database Systems & T-SQL</div>
+                    <div class="module-desc">Relational database design, normalization, triggers, stored procedures, and optimization in MySQL & MS SQL Server.</div>
+                </div>
+                <div class="module-footer">
+                    <span>Category: Data</span>
+                    <span>3 Credits</span>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module-card" data-category="year3">
+                <div>
+                    <div class="module-year">Year 3 • Core</div>
+                    <div class="module-title">Web Architecture (PHP / MVC)</div>
+                    <div class="module-desc">Building secure, scalable web applications with CodeIgniter framework, session management, and CRUD integrations.</div>
+                </div>
+                <div class="module-footer">
+                    <span>Category: Web Dev</span>
+                    <span>3 Credits</span>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module-card" data-category="year4">
+                <div>
+                    <div class="module-year">Year 4 • Specialization</div>
+                    <div class="module-title">Cloud Management Systems</div>
+                    <div class="module-desc">Architecting cloud environments, virtualization, automated deployments, microservices, and server security.</div>
+                </div>
+                <div class="module-footer">
+                    <span>Category: Infrastructure</span>
+                    <span>3 Credits</span>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module-card" data-category="year4">
+                <div>
+                    <div class="module-year">Year 4 • Senior Level</div>
+                    <div class="module-title">Senior Capstone Thesis Project</div>
+                    <div class="module-desc">End-to-end development of an enterprise software solution, web platform, or mobile integration project.</div>
+                </div>
+                <div class="module-footer">
+                    <span>Category: Capstone</span>
+                    <span>6 Credits</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="labs" class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>National University of Battambang (NUBB)</h4>
+                    <p>
+                        Dedicated to serving Cambodia through quality higher education, practical research, and technological advancement in Battambang province and beyond.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>Academic Units</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Faculty of Science & Technology</a></li>
+                        <li><a href="#">Department of Computer Science</a></li>
+                        <li><a href="#">Information Technology Center</a></li>
+                        <li><a href="#">Research & Innovation Hub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Location</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">National Road No. 5</a></li>
+                        <li><a href="#">Battambang City, Cambodia</a></li>
+                        <li><a href="#">www.nubb.edu.kh</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; National University of Battambang — Department of Information Technology. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Tab Switcher for Academic Tracks
+        function switchTab(tabId) {
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Remove active class from all panels
+            const panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+
+            // Activate current button and panel
+            event.currentTarget.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        // Filter Modules
+        function filterModules(category) {
+            // Update button states
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Filter items
+            const cards = document.querySelectorAll('.module-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    if (card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
